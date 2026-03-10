@@ -12,10 +12,10 @@ import static com.wavesenterprise.app.api.IContract.keys.USER_MAPPING;
 @ContractHandler
 public class Contract {
 
-    private ContractCall call;
-    private ContractState state;
+    private final ContractCall call;
+    private final ContractState state;
 
-    private Mapping<User> users;
+    private final Mapping<User> users;
 
     public Contract( ContractState state, ContractCall call) {
         this.call = call;
@@ -23,20 +23,19 @@ public class Contract {
         this.users = state.getMapping(new TypeReference<User>() {}, USER_MAPPING);
     }
 
-
     public void createUser(String wallet, String name, int age, String mail, int balance){
         User user = new User(wallet, name, age, mail, balance);
         users.put(wallet, user);
     }
 
-    @ContractInit
-    public void init() {
-        createUser("3NwDX3Z3XJjrstKbBuBANBtvreYuseByHYA", "Jack", 30, "mail@mail.com", 1000);
-    }
-
     public User getUserOrThrow(String wallet){
         return users.tryGet(wallet)
                 .orElseThrow(()-> new IllegalStateException("пользователь не найден"));
+    }
+
+    @ContractInit
+    public void init() {
+        createUser("3NwDX3Z3XJjrstKbBuBANBtvreYuseByHYA", "Jack", 30, "mail@mail.com", 1000);
     }
 
     @ContractAction
@@ -46,12 +45,12 @@ public class Contract {
     }
 
     @ContractAction
-    public void setPersonInfo(String name, String maill){
+    public void setPersonInfo(String name, String mail){
         String wallet = call.getCaller();
-        User atlant = getUserOrThrow(wallet);
-        atlant.setName(name);
-        atlant.setMail(maill);
-        users.put(wallet, atlant);
+        User Altant = getUserOrThrow(wallet);
+        Altant.setName(name);
+        Altant.setMail(mail);
+        users.put(wallet, Altant);
     }
 
 
