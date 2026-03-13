@@ -1,4 +1,5 @@
 package com.wavesenterprise.app;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wavesenterprise.app.app.Contract;
 import com.wavesenterprise.sdk.contract.core.dispatch.ContractDispatcher;

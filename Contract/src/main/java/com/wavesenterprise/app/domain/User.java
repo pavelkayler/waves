@@ -1,59 +1,26 @@
 package com.wavesenterprise.app.domain;
 
+import com.wavesenterprise.app.api.IContract.Roles;
+
 public class User {
     public String wallet;
     public String name;
-    public int age;
-    public String mail;
     public int balance;
+    public Roles role;
+    public String homeAddress;
+    public String jobPlace;
+    public String identifier;
 
-    public User(String wallet, String name, int age, String mail, int balance){
+    public User(String wallet, String name, int balance, Roles role, String homeAddress, String jobPlace, String identifier) {
         this.wallet = wallet;
         this.name = name;
-        this.age = age;
-        this.mail = mail;
         this.balance = balance;
+        this.role = role;
+        this.homeAddress = homeAddress;
+        this.jobPlace = jobPlace;
+        this.identifier = identifier;
     }
 
-    public User(){}
-
-    public void setWallet(String wallet) {
-        this.wallet = wallet;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
-
-    public String getWallet() {
-        return wallet;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public int getBalance() {
-        return balance;
+    public User() {
     }
 }
